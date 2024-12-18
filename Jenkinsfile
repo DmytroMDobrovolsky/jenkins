@@ -31,7 +31,7 @@ pipeline {
             steps { 
                 sh 'apk add --update python3 py3-pip' 
                 sh 'pip install xmlrunner' 
-                sh 'python3 TestNoteManager.py' 
+                sh 'python3 Test.py' 
             } 
             post { 
                 always { 
@@ -50,8 +50,8 @@ pipeline {
             agent any
             steps {
                 sh 'echo $DOCKER_CREDS_PSW | docker login --username $DOCKER_CREDS_USR --password-stdin'
-                sh 'docker build -t andriypolyuh/notes:latest .'
-                sh 'docker push andriypolyuh/notes:latest'
+                sh 'docker build -t DmytroMDobrovolsky/notes:latest .'
+                sh 'docker push DmytroMDobrovolsky/notes:latest'
             } 
         } // stage Publish
     } // stages
